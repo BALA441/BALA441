@@ -1,0 +1,28 @@
+---------------------- server -----------------------
+
+apt-get install nfs-kernel-server
+apt-get install nfs*
+
+mkdir /share_file
+
+nano /etc/exports
+		/share_file 	client_ip/24(rw,sync,no_root_squash)
+
+		
+exportfs -v
+
+service nfs-kernel-server restart
+
+---------------------- client -----------------------------
+
+apt-get instal nfs-utils
+
+showmount -e server_ip
+
+mkdir /file_share
+
+nano /etc/fstab
+
+mount server_ip:/share_file /file_share
+
+service nfs-kernel-server restart

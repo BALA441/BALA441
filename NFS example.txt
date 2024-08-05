@@ -1,0 +1,33 @@
+---------------------- server -----------------------
+
+apt-get install nfs-kernel-server
+apt-get install nfs*
+
+mkdir /share_file -------->example;mkdir /opt/innait
+
+nano /etc/exports
+		/share_file 	client_ip/24(rw,sync,no_root_squash)     ---->example;/opt/innait     10.0.3.174(rw,sync,no_subtree_check)
+/opt/innait     10.0.3.137(rw,sync,no_subtree_check)
+/opt/innait     10.0.9.136(rw,sync,no_subtree_check)
+
+
+		
+exportfs -v
+
+service nfs-kernel-server restart
+
+---------------------- client -----------------------------
+
+apt-get instal nfs-utils
+
+showmount -e server_ip -------> example; showmount -e 10.225.247.74
+
+mkdir /file_share     --------> example; mkdir /opt/innait/
+
+nano /etc/fstab       --------> example; 10.0.0.95:/opt/innait  /opt/innait   nfs   defaults   0    0
+
+
+mount server_ip:/share_file /file_share ------->example;mount -t nfs 10.0.0.95:/opt/innait  /opt/innait
+
+
+service nfs-kernel-server restart

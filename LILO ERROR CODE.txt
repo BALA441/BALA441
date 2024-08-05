@@ -1,0 +1,12 @@
+                ---------SOME LILO IMPARTEANT ERROR CODE LIST-----
+
+
+01—Invalid disk command
+➤ 0A—Bad sector flag
+➤ 0B—Bad track flag
+➤ 20—Controller failure
+➤ 40—Seek failure (BIOS)
+➤ 40—Cylinder>1023 (LILO)
+➤ 99—Invalid second stage index sector (LILO)
+➤ 9A—No second stage loader signature (LILO)
+➤ AA—Drive not readY
